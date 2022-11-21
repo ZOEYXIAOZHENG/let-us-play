@@ -19,6 +19,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    owned: [{type: Schema.Types.ObjectId, ref: 'Game'}],
+    played: [{type: Schema.Types.ObjectId, ref: 'Game'}],
+    wishlist: [{type: Schema.Types.ObjectId, ref: 'Game'}],
   },
   {
     timestamps: true,
