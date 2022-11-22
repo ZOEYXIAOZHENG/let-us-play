@@ -16,9 +16,17 @@ router.get("/", (req, res, next) => {
 });
 // Get all games
 router.get("/games", (req, res, next) => {
-  return Game.find()
+  return Game.find().then((games) => {
+    const newArr = []
+    console.log("GAMES",games[0])
+    games.forEach((game)=> {
+      newArr.push({...game._doc, rating: Math.floor(game.rating)})
+    })
+    return newArr
+  })
     .then((games) => {
-      res.render("games", { games });
+      console.log("gnewArraz", games[0])
+      res.render("games", {games});
     })
     .catch((error) => {
       console.log("Error while getting the games from the DB: ", error);
