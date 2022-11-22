@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const GameSchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
@@ -10,11 +10,19 @@ const GameSchema = new Schema(
       type: String,
       required: true,
     },
-    players: {
+    min_players: {
       type: Number,
       required: true,
     },
-    duration: {
+    max_players: {
+      type: Number,
+      required: true,
+    },
+    min_playtime: {
+      type: Number,
+      required: true,
+    },
+    min_age: {
       type: Number,
       required: true,
     },
@@ -24,7 +32,7 @@ const GameSchema = new Schema(
     price: {
       type: Number,
     },
-    imgUrl: {
+    image_url: {
       type: String,
     }
   },
