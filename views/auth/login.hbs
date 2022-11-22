@@ -1,21 +1,23 @@
-<div id="login-form">
+<div class="sign-up">
+<div id="form">
   <h2>Log In</h2>
   <form action="/login" method="POST">
 
-    <label> Email
+    <label> Email</label>
       <input type="email" name="email" placeholder="Your email" />
-    </label>
+    
 
-    <label> Password
+    <label> Password</label>
       <input type="password" name="password" placeholder="Your password" />
-    </label>
+    
 
-    <button type="submit">Log In</button>
+    <button type="submit">Let me in</button>
 
-    <a class="btn btn-primary" href="/signup" role="button">Register</a>
+    <p>New to Let's play? please create your account <a href="/signup" role="button">here</a></p>
 
     {{#if message}}
       <p class="error">{{message}}</p>
     {{/if}}
   </form>
+</div>
 </div>

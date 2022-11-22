@@ -1,18 +1,19 @@
+<div class="sign-up">
 <div id="form">
   <h2>Sign Up</h2>
   <form action="/signup" method="POST">
 
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+    <label> Username</label>
+      <input type="text" name="username" placeholder="Your username" required>
+    
 
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
+    <label> Email</label>
+      <input type="email" name="email" placeholder="Your email" required>
+    
 
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
+    <label> Password</label>
+      <input type="password" name="password" placeholder="Your password" required>
+    
 
     <button type="submit">Sign Up</button>
 
@@ -21,4 +22,5 @@
       <p class="error">{{message}}</p>
     {{/if}}
   </form>
+</div>
 </div>

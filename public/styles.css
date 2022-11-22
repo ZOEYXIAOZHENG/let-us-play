@@ -1,3 +1,153 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+}
+
+@font-face {
+  font-family:Nerko;
+  src: url(/images/NerkoOne-Regular.ttf);
+}
+
+/* ------------------- home Page ------------------------ */
+.homepage{
+    overflow-y: scroll;
+    display:flexbox;
+    flex-direction: column;
+    background-color: rgb(11, 11, 59);
+}
+
+
+header{
+    display: flex;
+    /* background-color: yellowgreen; */
+    width: 100%;
+    height:7%;
+    justify-content: space-between;
+    background-color: rgb(11, 11, 59);
+
+}
+
+header >a{
+    font-family: Nerko;
+    font-size: 4rem;
+    margin: 0.2em 0.5em;
+    color: rgb(29, 251, 84);
+    text-decoration: none;
+}
+
+header >a:hover{
+    color: rgb(29, 251, 84);
+}
+
+
+.base{
+    height:50vh;
+    width:60vw;
+    margin:6vh 19vw;
+    position: relative;
+    
+}
+.base >h2{
+    font-size: 48px;
+    z-index:20;
+    bottom: 5%;
+    left:2%;
+    position: absolute;
+    color: rgb(16, 15, 15);
+    
+}
+
+.base >img{
+    height:auto;
+    width:60vw;
+    border-radius: 25px;
+}
+
+.base:hover{
+    transform: scale(1.1);
+}
+
+#nav{
+    width:15vw;
+    height:7vh;
+    right:2vw;
+    display: flexbox;
+    justify-content: space-between;
+}
+
+#nav a{
+    text-decoration: none;
+    font-size: 1.2em;
+    font-family:sans-serif;
+    line-height: 7vh;
+    margin-left: 1.5vw;
+    color: aliceblue;
+}
+
+#nav a:hover{
+    color:rgb(29, 251, 84);
+    font-weight: 600;
+    transform: scale(1.2)
+}
+
+#games-window{
+
+}
+
+/* ------------------- Auth Page(Sign up & Login) ------------------------ */
+
+.sign-up{
+    background-color: rgb(11, 11, 59);
+    width:100%;
+    height:100%;
+}
+
+#form{
+    width:26vw;
+    height:60vh;
+    color:rgba(235, 245, 234);
+    position: absolute;
+    top:24vh;
+    left:34vw;
+    padding:3rem;
+    border-radius: 20px;
+    border: 4px solid rgb(29, 251, 84);
+    box-shadow: 0px 11px 35px 2px rgba(199, 234, 213, 0.14);
+    font-family: 'Quicksand', sans-serif;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+form >input{
+    width:18vw;
+    height: 5vh;
+    border-radius: 15px;
+    
+}
+
+form >label{
+    margin-top: 3vh;
+    margin-bottom:1vh;
+    color: greenyellow;
+}
+
+form > button{
+   background:linear-gradient(to right, #1fe70d, #12ebe7);
+   border-radius: 5em;
+   color: #fff;
+   border: 0;
+   margin-left: 20%;
+   font-size: 13px;
+   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+   margin-top: 4vh;
+   margin-bottom: 4vh;
+   padding:10px 50px;
+   font-size: larger;
+}
+
+/* ------------------- Games Page------------------------ */
+
 .games {
   background-color: rgb(11, 11, 59);
   color: white;

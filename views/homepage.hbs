@@ -1,13 +1,26 @@
+<div class="homepage">
+{{!-- <header>
+    <h1>{{appTitle}}</h1>
+    <div id="nav">
+    <a  href="/login" role="button">Login</a>
+    <a  href="/signup" role="button">Sign up</a>
+    </div>
+</header> --}}
 
-<div class="base"></div>
-<h1>{{appTitle}}</h1>
+<div class="base">
+    <img src="./images/source.gif">
+    <h2>have fun with board games</h2>
+</div>
 
-<p>Let's Play!!</p>
+<div id="games-window">
+<p>🟡What's new:🟡</p>
  {{#each games}}
   <h1>{{this.name}}</h1>
  {{/each}}
  <a class="btn btn-primary" href="/games" role="button">All games</a>
- <a class="btn btn-primary" href="/login" role="button">Login</a>
- {{!-- <a class="btn btn-primary" href="/logout" role="button">Logout</a> --}}
+ </div>
+ 
+ <a class="btn btn-primary" href="/logout" role="button">Logout</a>
 
  <footer> © 2022 Iwona + Zoey Copyright Reserved. </footer>
+ </div>
