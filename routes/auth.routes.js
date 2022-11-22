@@ -27,7 +27,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
     res.status(400).render("auth/signup", {
-      errorMessage:
+      message:
         "All fields are mandatory. Please provide your username, email and password.",
     });
 
@@ -36,7 +36,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   if (password.length < 6) {
     res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+      message: "Your password needs to be at least 6 characters long.",
     });
 
     return;
@@ -49,7 +49,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     res
       .status(400)
       .render("auth/signup", {
-        errorMessage: "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
+        message: "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
     });
     return;
   }
@@ -63,15 +63,16 @@ router.post("/signup", isLoggedOut, (req, res) => {
       // Create a user and save it in the database
       return User.create({ username, email, password: hashedPassword });
     })
-    .then((user) => {
-      res.redirect("/auth/login");
+    .then(() => {
+      res.render("auth/login", { message: "Your account was successfully created, please log in" });
+
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render("auth/signup", { errorMessage: error.message });
+        res.status(500).render("auth/signup", { message: error.message });
       } else if (error.code === 11000) {
         res.status(500).render("auth/signup", {
-          errorMessage:
+          message:
             "Username and email need to be unique. Provide a valid username or email.",
         });
       } else {
@@ -92,7 +93,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
     res.status(400).render("auth/login", {
-      errorMessage:
+      message:
         "All fields are mandatory. Please provide username, email and password.",
     });
 
@@ -103,7 +104,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   // - either length based parameters or we check the strength of a password
   if (password.length < 6) {
     return res.status(400).render("auth/login", {
-      errorMessage: "Your password needs to be at least 6 characters long.",
+      message: "Your password needs to be at least 6 characters long.",
     });
   }
 
@@ -114,7 +115,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       if (!user) {
         res
           .status(400)
-          .render("auth/login", { errorMessage: "Wrong credentials." });
+          .render("auth/login", { message: "Wrong credentials." });
         return;
       }
 
@@ -125,7 +126,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           if (!isSamePassword) {
             res
               .status(400)
-              .render("auth/login", { errorMessage: "Wrong credentials." });
+              .render("auth/login", { message: "Wrong credentials." });
             return;
           }
 
@@ -134,7 +135,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           // Remove the password field
           delete req.session.currentUser.password;
 
-          res.redirect("/");
+          res.redirect("/profile");
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
@@ -145,7 +146,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      res.status(500).render("auth/logout", { errorMessage: err.message });
+      res.status(500).render("auth/logout", { message: err.message });
       return;
     }
 

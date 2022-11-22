@@ -7,7 +7,7 @@ const Game = require("../models/Game.model");
 router.get("/", (req, res, next) => {
   return Game.find()
     .then((games) => {
-      res.render("index", { games });
+      res.render("homepage", { games });
     })
     .catch((error) => {
       console.log("Error while getting the games from the DB: ", error);
@@ -42,8 +42,7 @@ router.get('/profile/edit', (req, res, next) => {
 
   User.findById(req.session.currentUser).populate("owned").populate("played").populate("wishlist")
     .then(user => {
-      console.log(user)
-      // res.render("edit-profile", { owned, played, wishlist } = user)
+      res.render("edit-profile", { owned, played, wishlist } = user)
     })
     .catch(error => next(error));
 });
