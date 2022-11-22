@@ -1,10 +1,6 @@
 <div id="login-form">
   <h2>Log In</h2>
-  <form action="/auth/login" method="POST">
-
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+  <form action="/login" method="POST">
 
     <label> Email
       <input type="email" name="email" placeholder="Your email" />
@@ -16,9 +12,10 @@
 
     <button type="submit">Log In</button>
 
+    <a class="btn btn-primary" href="/signup" role="button">Register</a>
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
+    {{#if message}}
+      <p class="error">{{message}}</p>
     {{/if}}
   </form>
 </div>
