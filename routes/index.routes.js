@@ -55,4 +55,11 @@ router.post('/profile/edit', (req, res, next) => {
     .catch(error => next(error));
 });
 
+ router.post('/games/search', async (req, res) => {
+  console.log(req.body.query)
+  const game = await Game.find({name: req.body.query})
+  console.log(game[0])
+  res.render("games", { games: game[0] })
+
+});
 module.exports = router;
