@@ -36,7 +36,8 @@ router.get("/games", (req, res, next) => {
 
 // GET single game page
 router.get("/games/:id", (req, res) => {
-  Game.findById(req.params.id).then((game) => res.render("game-page", {title, description, players, duration, rating, price, imgUrl} = game))
+  console.log("req: ", req.params.id)
+  Game.findById(req.params.id).then((game) => res.render("game-page", {name, description, min_players, max_players, min_playtime, min_age, rating, price, img_url} = game))
 });
 
 //GET users profile

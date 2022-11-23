@@ -45,7 +45,7 @@ header >a:hover{
     width:60vw;
     margin:6vh 19vw;
     position: relative;
-    
+
 }
 .base >h2{
     font-size: 48px;
@@ -54,7 +54,7 @@ header >a:hover{
     left:2%;
     position: absolute;
     color: rgb(16, 15, 15);
-    
+
 }
 
 .base >img{
@@ -71,7 +71,7 @@ header >a:hover{
     width:15vw;
     height:7vh;
     right:2vw;
-    display: flexbox;
+    display: flex;
     justify-content: space-between;
 }
 
@@ -110,10 +110,9 @@ header >a:hover{
     margin: 4em 0 2em 2em;
 }
 
-.card-home:hover{
+.card-hover:hover{
     transform: scale(1.2);
     box-shadow: 0px 21px 35px 4px rgba(69, 193, 231, 0.8);
-    
 }
 
 
@@ -139,14 +138,14 @@ header >a:hover{
     font-family: 'Quicksand', sans-serif;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 form >input{
     width:18vw;
     height: 5vh;
     border-radius: 15px;
-    
+
 }
 
 form >label{
@@ -207,4 +206,25 @@ svg {
   display: flex;
   gap: 0.5rem;
   justify-content: space-between;
+}
+
+/* Game Page */
+
+.game-page {
+  padding: 3rem 7rem 3rem 7rem;
+}
+.game-page > section {
+  display: flex;
+  gap: 5rem;
+  padding: 1rem;
+  justify-content: center;
+}
+.game-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.game-details-container > h1 {
+  font-family: Nerko;
+  color:  rgb(11, 11, 59);
 }
