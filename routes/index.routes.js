@@ -36,12 +36,13 @@ router.get("/games", (req, res, next) => {
 // GET single game page
 router.get("/games/:id", (req, res) => {
   console.log("req: ", req.params.id)
-  Game.findById(req.params.id).then((game) => res.render("game-page", {name, description, min_players, max_players, min_playtime, min_age, rating, price, img_url} = game))
+  Game.findById(req.params.id).then((game) => res.render("game-page", {game}))
 });
 
 //GET users profile
 router.get("/profile", (req, res) => {
-  User.findById(req.session.currentUser).then((user) => res.render("profile", {username, owned, played, wishlist} = user))
+  User.findById(req.session.currentUser).populate("owned").populate("played").populate("wishlist")
+  .then((user) => res.render("profile", {user}))
 });
 
 //Edit user's profile
@@ -69,5 +70,26 @@ router.post('/profile/edit', (req, res, next) => {
   console.log(game[0])
   res.render("games", { games: game[0] })
 
+});
+
+router.post('/add-game/:gameId', async (req, res) => {
+  const list = req.body.list
+  console.log("list", list)
+  const gameId = req.params.gameId
+  console.log("game id", gameId)
+  const game = await Game.findById(gameId)
+  if (req.session.currentUser) {
+    if (list === "owned") {
+      req.session.currentUser.owned.push(gameId)
+    } else if (list === "played") {
+      req.session.currentUser.played.push(gameId)
+    } else if (list === "wishlist") {
+      req.session.currentUser.wishlist.push(gameId)
+    }
+    console.log(req.session.currentUser)
+    res.render("game-page", { game, message: `${game.name} was added to your "${list}" list!`});
+  } else {
+    res.redirect(`/login`)
+  }
 });
 module.exports = router;

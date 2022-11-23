@@ -1,2 +1,13 @@
-<h1>Profile view</h1>
-<p>{{username}}</p>
+<h1>{{user.username}}</h1>
+<main class="profile">
+  <section class="owned">
+    <div class="cards-grid">
+      {{#each user.owned}}
+        <div class="profile-details">
+          <img src={{this.img_url}} alt="owned game">
+          <p>{{this.title}}</p>
+        </div>
+      {{/each}}
+    </div>
+  </section>
+</main>

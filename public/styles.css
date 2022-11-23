@@ -95,7 +95,7 @@ header >a:hover{
     position: relative;
     place-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr 1fr ; 
+    grid-template-rows:1fr 1fr 1fr ;
     row-gap: 5em;
     margin-top: 10vh;
 }
@@ -238,4 +238,20 @@ svg {
 .game-page > section img {
  height: 500px;
  width: 500px;
+}
+
+
+/* Profile page */
+
+.profile-details {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  justify-content: center;
+  align-content: center;
+}
+
+.profile-details img {
+  width: 20px;
+  height: 20px;
 }
