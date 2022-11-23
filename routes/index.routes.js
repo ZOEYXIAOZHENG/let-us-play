@@ -25,7 +25,6 @@ router.get("/games", (req, res, next) => {
     return newArr
   })
     .then((games) => {
-      console.log("gnewArraz", games[0])
       res.render("games", {games});
     })
     .catch((error) => {
