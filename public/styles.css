@@ -197,15 +197,15 @@ form > button{
   -webkit-box-orient: vertical;
 }
 
-svg {
+.card svg {
   height: 15px;
   width: 15px;
 }
 
 .card-details {
   display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
+  gap: 2rem;
+  justify-content: flex-start;
 }
 
 .card:hover {
@@ -213,6 +213,12 @@ svg {
 }
 .card-text {
   text-decoration: none !important;
+}
+.game-details-container {
+  width: -webkit-fill-available;
+}
+.game-card {
+  border: none!important;
 }
 
 /* Game Page */
@@ -239,19 +245,41 @@ svg {
  height: 500px;
  width: 500px;
 }
+.game-card-text {
 
+}
 
 /* Profile page */
 
+.profile {
+  padding: 3rem 7rem 3rem 7rem;
+}
 .profile-details {
-  display: flex;
   padding: 1rem;
-  gap: 1rem;
-  justify-content: center;
-  align-content: center;
+  text-align: center;
 }
 
 .profile-details img {
-  width: 20px;
-  height: 20px;
+  width: 60px;
+  height: 60px;
+}
+
+.profile h1 {
+  font-family: Nerko;
+  color:  rgb(11, 11, 59);
+}
+
+.profile-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content:flex-start;
+  color:black;
+  padding: 1rem 0 1rem 0;
+}
+.profile svg {
+  height: 25px;
+  width: 25px;
+  margin-left: 1rem;
+  margin-top: 0.8rem;
 }

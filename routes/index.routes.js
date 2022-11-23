@@ -41,8 +41,10 @@ router.get("/games/:id", (req, res) => {
 
 //GET users profile
 router.get("/profile", (req, res) => {
-  User.findById(req.session.currentUser).populate("owned").populate("played").populate("wishlist")
-  .then((user) => res.render("profile", {user}))
+  User.findById(req.session.currentUser._id).populate("owned").populate("played").populate("wishlist")
+  .then((user) => {
+    console.log(user)
+    res.render("profile", {user})})
 });
 
 //Edit user's profile
@@ -80,11 +82,11 @@ router.post('/add-game/:gameId', async (req, res) => {
   const game = await Game.findById(gameId)
   if (req.session.currentUser) {
     if (list === "owned") {
-      req.session.currentUser.owned.push(gameId)
+      await User.findByIdAndUpdate(req.session.currentUser._id, { $push: { owned: game._id } })
     } else if (list === "played") {
-      req.session.currentUser.played.push(gameId)
+      await User.findByIdAndUpdate(req.session.currentUser._id, { $push: { played: game._id } })
     } else if (list === "wishlist") {
-      req.session.currentUser.wishlist.push(gameId)
+      await User.findByIdAndUpdate(req.session.currentUser._id, { $push: { wishlist: game._id } })
     }
     console.log(req.session.currentUser)
     res.render("game-page", { game, message: `${game.name} was added to your "${list}" list!`});
