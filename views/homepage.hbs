@@ -1,17 +1,32 @@
 <div class="homepage">
 <div class="base">
     <img src="./images/source.gif">
-    <h2>have fun with board games</h2>
+    <h2>Share joy with your friends...</h2>
+    
+    {{#if user}}
+    <h4><a href="/games" role="button">Discover more >> </a></h4>
+    {{else}}
+    <h4><a href="/login" role="button">Discover more >> </a></h4>
+    {{/if}}
 </div>
 <div id="container">
 <h3>NEW BOARDGAMES:</h3>
 <div id="games-window">
  {{#each games}}
-<div class="card-home">{{> card }}</div>
+<div class="card-hover">{{> card }}</div>
  {{/each}}
- <a class="btn btn-primary" href="/games" role="button">All games</a>
+</div>
+
+ <div id="info">
+   <h3 class="pro">Beginner or Pro? </h3>
+   <img src="./images/catan.gif">
+   <div class="words">Need new challenges?
+    
+Join ranked games and meet new challenges! The best players rise through the ranks!</div>
  </div>
+ <a class="btn btn-primary" href="/games" role="button">All games</a>
+ 
 
  <a class="btn btn-primary" href="/logout" role="button">Logout</a>
  </div>
- </div>
+ 
