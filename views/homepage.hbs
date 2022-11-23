@@ -3,15 +3,15 @@
     <img src="./images/source.gif">
     <h2>have fun with board games</h2>
 </div>
-
+<div id="container">
+<h3>NEW BOARDGAMES:</h3>
 <div id="games-window">
  {{#each games}}
-  {{> card }}
+<div class="card-home">{{> card }}</div>
  {{/each}}
  <a class="btn btn-primary" href="/games" role="button">All games</a>
  </div>
 
  <a class="btn btn-primary" href="/logout" role="button">Logout</a>
-
- <footer> © 2022 Iwona + Zoey Copyright Reserved. </footer>
+ </div>
  </div>
