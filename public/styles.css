@@ -87,8 +87,34 @@ header >a:hover{
 #nav a:hover{
     color:rgb(29, 251, 84);
     font-weight: 600;
-    transform: scale(1.2);
+    transform: scale(1.2)
 }
+
+#games-window{
+    display: grid;
+    position: relative;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows:1fr 1fr 1fr ; 
+    row-gap: 5em;
+    margin-top: 10vh;
+}
+#container{
+    position: relative;
+}
+#container h3{
+    color: #fff;
+    font-weight: 900;
+    font-size: 3em;
+    position: relative;
+    margin: 4em 0 2em 2em;
+}
+
+.card-hover:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 21px 35px 4px rgba(69, 193, 231, 0.8);
+}
+
 
 /* ------------------- Auth Page(Sign up & Login) ------------------------ */
 
@@ -108,7 +134,7 @@ header >a:hover{
     padding:3rem;
     border-radius: 20px;
     border: 4px solid rgb(29, 251, 84);
-    box-shadow: 0px 11px 35px 2px rgba(199, 234, 213, 0.14);
+    box-shadow: 0px 21px 45px 4px rgba(223, 239, 230, 0.14);
     font-family: 'Quicksand', sans-serif;
     justify-content: center;
     align-items: center;
