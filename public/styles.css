@@ -277,9 +277,6 @@ form >label{
  height: 500px;
  width: 500px;
 }
-.game-card-text {
-
-}
 
 /* Profile page */
 
@@ -314,4 +311,16 @@ form >label{
   width: 25px;
   margin-left: 1rem;
   margin-top: 0.8rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.remove {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 0;
+  top:50%;
 }
