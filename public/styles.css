@@ -62,7 +62,7 @@ header >a:hover{
     bottom:3%;
     right:2%;
     position: absolute;
-    font-weight: 800;    
+    font-weight: 800;
 }
 
 .more{
@@ -118,7 +118,7 @@ header >a:hover{
     position: relative;
     place-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr; 
+    grid-template-rows:1fr 1fr;
     row-gap: 5em;
     margin-top: 10vh;
     margin-bottom: 10vh;
@@ -136,7 +136,7 @@ header >a:hover{
 
 .card-hover:hover{
     transform: scale(1.2);
-    box-shadow: 0px 21px 35px 4px rgba(69, 193, 231, 0.8);   
+    box-shadow: 0px 21px 35px 4px rgba(69, 193, 231, 0.8);
 }
 
 #info{
@@ -155,7 +155,7 @@ header >a:hover{
     border-radius: 18px;
     position:absolute;
     right:4vw;
-    top:1vh; 
+    top:1vh;
 }
 
 #info img:hover{
@@ -349,9 +349,8 @@ form >label{
 }
 
 .remove {
-  width: 15px;
-  height: 15px;
   padding: 0;
   margin: 0;
-  top:50%;
+  background-color: transparent;
+  border: none;
 }
