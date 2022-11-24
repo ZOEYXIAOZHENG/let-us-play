@@ -9,6 +9,7 @@
 }
 
 /* ------------------- home Page ------------------------ */
+
 .homepage{
     overflow-y: scroll;
     display:flex;
@@ -236,7 +237,14 @@ form >label{
 .games {
   background-color: rgb(11, 11, 59);
   color: white;
+  padding-top: 10vh;
 }
+
+.games-searchbar {
+  width: 50%!important;
+  margin-left: 25%;
+}
+
 .cards-grid {
   display: flex;
   flex-wrap: wrap;
@@ -313,6 +321,7 @@ form >label{
 
 .profile {
   padding: 3rem 7rem 3rem 7rem;
+  height: 114vh;
 }
 .profile-details {
   padding: 1rem;
