@@ -44,7 +44,7 @@ header >a:hover{
     height:65vh;
     width:60vw;
     margin:6vh 19vw;
-    position: relative;   
+    position: relative;
 }
 .base >h2{
     font-size: 48px;
@@ -55,7 +55,6 @@ header >a:hover{
     position: absolute;
     color: rgb(54, 54, 55);
     text-shadow: 2px 2px #aacfa8;
-    
 }
 
 
@@ -87,7 +86,7 @@ header >a:hover{
     width:15vw;
     height:7vh;
     right:2vw;
-    display: flexbox;
+    display: flex;
     justify-content: space-between;
 }
 
@@ -138,7 +137,6 @@ header >a:hover{
     position: relative;
     margin:2vh 3vw;
     border: #1fe70d 2px dotted;
-    
 }
 
 #info img{
@@ -171,14 +169,14 @@ header >a:hover{
     font-family: 'Quicksand', sans-serif;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 form >input{
     width:18vw;
     height: 5vh;
     border-radius: 15px;
-    
+
 }
 
 form >label{
@@ -231,13 +229,89 @@ form >label{
   -webkit-box-orient: vertical;
 }
 
-svg {
+.card svg {
   height: 15px;
   width: 15px;
 }
 
 .card-details {
   display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+.card-text {
+  text-decoration: none !important;
+}
+.game-details-container {
+  width: -webkit-fill-available;
+}
+.game-card {
+  border: none!important;
+}
+
+/* Game Page */
+
+.game-page {
+  padding: 3rem 7rem 3rem 7rem;
+}
+.game-page > section {
+  display: flex;
+  gap: 5rem;
+  padding: 1rem;
+  justify-content: center;
+}
+.game-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.game-details-container > h1 {
+  font-family: Nerko;
+  color:  rgb(11, 11, 59);
+}
+.game-page > section img {
+ height: 500px;
+ width: 500px;
+}
+.game-card-text {
+
+}
+
+/* Profile page */
+
+.profile {
+  padding: 3rem 7rem 3rem 7rem;
+}
+.profile-details {
+  padding: 1rem;
+  text-align: center;
+}
+
+.profile-details img {
+  width: 60px;
+  height: 60px;
+}
+
+.profile h1 {
+  font-family: Nerko;
+  color:  rgb(11, 11, 59);
+}
+
+.profile-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content:flex-start;
+  color:black;
+  padding: 1rem 0 1rem 0;
+}
+.profile svg {
+  height: 25px;
+  width: 25px;
+  margin-left: 1rem;
+  margin-top: 0.8rem;
 }
