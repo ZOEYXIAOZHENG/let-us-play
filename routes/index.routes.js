@@ -47,13 +47,22 @@ router.get("/games", (req, res, next) => {
     return newArr
   })
     .then((games) => {
-      console.log("gnewArraz", games[0])
       res.render("games", { games, user: req.session.currentUser });
     })
     .catch((error) => {
       console.log("Error while getting the games from the DB: ", error);
       next(error);
     });
+  });
+
+
+router.post('/games/:gameId/delete', (req, res, next) => {
+  console.log("delete route")
+  const gameId = req.params.gameId
+  console.log(req.params)
+  Game.findByIdAndDelete(gameId)
+    .then((x) => { res.redirect("/profile")})
+    .catch(error => next(error));
 });
 
 // GET single game page
@@ -95,7 +104,6 @@ router.post('/profile/edit', (req, res, next) => {
   const game = await Game.find({name: req.body.query})
   console.log(game[0])
   res.render("games", { user: req.session.currentUser, games: game[0] });
-
 });
 
 router.post('/add-game/:gameId', async (req, res) => {
@@ -118,4 +126,7 @@ router.post('/add-game/:gameId', async (req, res) => {
     res.redirect(`/login`)
   }
 });
+
+
+
 module.exports = router;
