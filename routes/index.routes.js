@@ -21,7 +21,7 @@ router.get("/", (req, res, next) => {
       }
       if (!duplicate){
           homeGames.push(random);
-      } 
+      }
        }
 
        console.log("games: ", homeGames)
@@ -59,41 +59,14 @@ router.get("/games", (req, res, next) => {
 // GET single game page
 router.get("/games/:id", (req, res) => {
   Game.findById(req.params.id).then((game) =>
-      res.render(
-          "game-page",
-          ({
-              user: req.session.currentUser,
-              title,
-              description,
-              players,
-              duration,
-              rating,
-              price,
-              imgUrl,
-          } = game)
-      )
-  );
-
+    res.render("game-page", {user: req.session.currentUser, game}))
 });
 
 //GET users profile
 router.get("/profile", (req, res) => {
-  User.findById(req.session.currentUser).then((user) =>{
-  const {username,
-              owned,
-              played,
-              wishlist} = user
-      res.render(
-          "profile",
-          {
-              user: req.session.currentUser,
-              username,
-              owned,
-              played,
-              wishlist,
-          })
-        });
-});
+  User.findById(req.session.currentUser).populate("owned").populate("played").populate("wishlist").then((user) => res.render("profile", {user}))
+  });
+
 
 //Edit user's profile
 router.get('/profile/edit', (req, res, next) => {
@@ -140,7 +113,7 @@ router.post('/add-game/:gameId', async (req, res) => {
       await User.findByIdAndUpdate(req.session.currentUser._id, { $push: { wishlist: game._id } })
     }
     console.log(req.session.currentUser)
-    res.render("game-page", { game, message: `${game.name} was added to your "${list}" list!`});
+    res.render("game-page", { game, message: `${game.name} was added to your "${list}" list!`, user: req.session.currentUser});
   } else {
     res.redirect(`/login`)
   }
