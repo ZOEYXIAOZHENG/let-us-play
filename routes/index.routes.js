@@ -89,8 +89,8 @@ router.post('/profile/edit', (req, res, next) => {
 
  router.post('/games/search', async (req, res) => {
   const game = await Game.find({name: req.body.query})
-  console.log(game)
-  res.render("games", { user: req.session.currentUser, games: game[0] });
+  console.log(game[0])
+  res.render("games", { user: req.session.currentUser, games: game });
 });
 
 router.post('/add-game/:gameId', async (req, res) => {
