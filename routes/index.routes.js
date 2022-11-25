@@ -24,8 +24,6 @@ router.get("/", (req, res, next) => {
       }
        }
 
-       console.log("games: ", homeGames)
-
       res.render("homepage", {
           games: homeGames,
           user: req.session.currentUser,
@@ -39,14 +37,6 @@ router.get("/", (req, res, next) => {
 // Get all games
 router.get("/games", (req, res, next) => {
   return Game.find().then((games) => {
-    const newArr = []
-    console.log("GAMES",games[0])
-    games.forEach((game)=> {
-      newArr.push({...game._doc, rating: Math.floor(game.rating)})
-    })
-    return newArr
-  })
-    .then((games) => {
       res.render("games", { games, user: req.session.currentUser });
     })
     .catch((error) => {
@@ -57,9 +47,7 @@ router.get("/games", (req, res, next) => {
 
 
 router.post('/games/:gameId/delete', (req, res, next) => {
-  console.log("delete route")
   const gameId = req.params.gameId
-  console.log(req.params)
   Game.findByIdAndDelete(gameId)
     .then((x) => { res.redirect("/profile")})
     .catch(error => next(error));
@@ -100,17 +88,14 @@ router.post('/profile/edit', (req, res, next) => {
 });
 
  router.post('/games/search', async (req, res) => {
-  console.log(req.body.query)
   const game = await Game.find({name: req.body.query})
   console.log(game[0])
-  res.render("games", { user: req.session.currentUser, games: game[0] });
+  res.render("games", { user: req.session.currentUser, games: game });
 });
 
 router.post('/add-game/:gameId', async (req, res) => {
   const list = req.body.list
-  console.log("list", list)
   const gameId = req.params.gameId
-  console.log("game id", gameId)
   const game = await Game.findById(gameId)
   if (req.session.currentUser) {
     if (list === "owned") {
@@ -120,7 +105,6 @@ router.post('/add-game/:gameId', async (req, res) => {
     } else if (list === "wishlist") {
       await User.findByIdAndUpdate(req.session.currentUser._id, { $push: { wishlist: game._id } })
     }
-    console.log(req.session.currentUser)
     res.render("game-page", { game, message: `${game.name} was added to your "${list}" list!`, user: req.session.currentUser});
   } else {
     res.redirect(`/login`)
