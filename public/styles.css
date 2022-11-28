@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
     margin:0;
-} 
+}
 
 @font-face {
   font-family:Nerko;
@@ -385,4 +385,29 @@ form >label{
   margin: 0;
   background-color: transparent;
   border: none;
+}
+
+/* Star rating */
+.rating-box {
+  display: flex;
+}
+.rating-box p {
+  margin: 0 1rem 0 0;
+  align-self: center;
+}
+.rating-container {
+  direction: rtl !important;
+}
+.rating-container label {
+  display: inline-block;
+  color: #d4d4d4;
+  cursor: pointer;
+  font-size: 30px;
+  transition: color 0.2s;
+}
+.rating-container input {
+  display: none;
+}
+.rating-container  label:hover, label:hover ~ label, input:checked ~ label  {
+  color: gold;
 }
