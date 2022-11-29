@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require("../models/User.model");
 const Game = require("../models/Game.model");
+const UserRating = require("../models/UserRating.model");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -60,8 +61,11 @@ router.get("/games/:id", (req, res) => {
 });
 
 //GET users profile
-router.get("/profile", (req, res) => {
-  User.findById(req.session.currentUser).populate("owned").populate("played").populate("wishlist").then((user) => res.render("profile", {user}))
+router.get("/profile", async (req, res) => {
+  const user = await User.findById(req.session.currentUser).populate("owned").populate("played").populate("wishlist")
+  const userRatings = await UserRating.find({user: user._id}).populate("game")
+  userRatings.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+  res.render("profile", {user, userRatings})
   });
 
 
@@ -111,6 +115,30 @@ router.post('/add-game/:gameId', async (req, res) => {
   }
 });
 
+// Add rating
+router.post('/add-rating/:gameId', async (req, res) => {
+  const user = req.session.currentUser
+  const gameId = req.params.gameId
+  const rating = req.body.rating
+  if (user) {
+    console.log("From add-rating route - user:", user, "gameId:", gameId, "rating", rating, "body:", req.body)
+    if (req.session.currentUser.owned.includes(gameId) || req.session.currentUser.played.includes(gameId)) {
+      const test = await UserRating.create({ user: req.session.currentUser._id, game: gameId, rating })
+      console.log(test)
+    } else {
+      res.render("game-page", { game, message: `You can only rate games that are on your "Owned" or "Played" list!` , user: req.session.currentUser});
+    }
+  } else {
+    res.redirect(`/login`)
+  }
+
+  // if (req.session.currentUser.owned.includes(gameId) || req.session.currentUser.played.includes(gameId)) {
+  //   await Game.findByIdAndUpdate(gameId, { $push: { ratings: rating } })
+  //   res.render("game-page", { game, message: `${game.name} was added to your "${list}" list!`, user: req.session.currentUser});
+  // } else {
+  //   res.redirect(`/login`)
+  // }
+});
 
 
 module.exports = router;

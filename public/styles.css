@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
     margin:0;
-} 
+}
 
 @font-face {
   font-family:Nerko;
@@ -346,6 +346,13 @@ form >label{
   padding: 3rem 7rem 3rem 7rem;
   height: 114vh;
 }
+
+.profile-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 5rem;
+}
+
 .profile-details {
   padding: 1rem;
   text-align: center;
@@ -385,4 +392,33 @@ form >label{
   margin: 0;
   background-color: transparent;
   border: none;
+}
+
+.profile-container-right {
+  flex: 1;
+}
+
+/* Star rating */
+.rating-box {
+  display: flex;
+}
+.rating-box p {
+  margin: 0 1rem 0 0;
+  align-self: center;
+}
+.rating-container {
+  direction: rtl !important;
+}
+.rating-container label {
+  display: inline-block;
+  color: #d4d4d4;
+  cursor: pointer;
+  font-size: 30px;
+  transition: color 0.2s;
+}
+.rating-container input {
+  display: none;
+}
+.rating-container  label:hover, label:hover ~ label, input:checked ~ label  {
+  color: gold;
 }

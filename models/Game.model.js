@@ -34,6 +34,9 @@ const GameSchema = new Schema(
     },
     image_url: {
       type: String,
+    },
+    ratings: {
+      type: Array,
     }
   },
   {

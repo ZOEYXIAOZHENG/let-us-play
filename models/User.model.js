@@ -22,6 +22,8 @@ const userSchema = new Schema(
     owned: [{type: Schema.Types.ObjectId, ref: 'Game'}],
     played: [{type: Schema.Types.ObjectId, ref: 'Game'}],
     wishlist: [{type: Schema.Types.ObjectId, ref: 'Game'}],
+
+    my_ratings: [{type: Schema.Types.ObjectId, ref: 'Game'}]
   },
   {
     timestamps: true,

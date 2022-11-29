@@ -23,6 +23,16 @@
       </div>
       <button type="submit">Add to collection</button>
     </form>
+    <div class="rating-box">
+    <p>Your rating: </p>
+    <form class="rating-container" action="/add-rating/{{game._id}}" method="POST">
+      <input type="submit" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
+      <input type="submit" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+      <input type="submit" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+      <input type="submit" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+      <input type="submit" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+    </form>
+  </div>
     {{#if message}}
       <p class="error">{{message}}</p>
     {{/if}}
