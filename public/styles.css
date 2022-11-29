@@ -346,6 +346,13 @@ form >label{
   padding: 3rem 7rem 3rem 7rem;
   height: 114vh;
 }
+
+.profile-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 5rem;
+}
+
 .profile-details {
   padding: 1rem;
   text-align: center;
@@ -385,6 +392,10 @@ form >label{
   margin: 0;
   background-color: transparent;
   border: none;
+}
+
+.profile-container-right {
+  flex: 1;
 }
 
 /* Star rating */
